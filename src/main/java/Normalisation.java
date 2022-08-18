@@ -56,23 +56,6 @@ public class Normalisation {
         }
     }
 
-    public Normalisation(String[] lista_worda, String tip) {
-        for(String word: lista_worda) {
-            Double pocetno_slovo = ((double) (word.toUpperCase().toCharArray())[0]) - 65;
-            Double zadnje_slovo = ((double) (word.toUpperCase().toCharArray())[word.length() - 1]) - 65;
-            Double broj_slogova = syllablecount(word);
-            Double word_length = Double.valueOf(word.length());
-            Double broj_samoglanika = samoglasnikcount(word);
-            String output = pocetno_slovo+","+zadnje_slovo+","+broj_slogova+","+word_length+","+broj_samoglanika+","+tip+"\n";
-            try {
-                Files.write(Paths.get("input.csv"), output.getBytes(), StandardOpenOption.APPEND);
-
-            }catch (IOException e) {
-                //exception handling left as an exercise for the reader
-            }
-        }
-    }
-
     public static double[] normalizeInput(String word){
         Double pocetno_slovo = ((double) (word.toUpperCase().toCharArray())[0]) - 65;
         pocetno_slovo = (pocetno_slovo - pocetno_min)/(pocetno_max-pocetno_min);
