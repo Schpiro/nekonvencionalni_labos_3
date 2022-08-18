@@ -84,12 +84,7 @@ public class Normalisation {
         word_length = (word_length - length_min)/(length_max-length_min);
         Double broj_samoglanika = samoglasnikcount(word);
         broj_samoglanika = (broj_samoglanika - brojsamoglasnika_min)/(brojsamoglasnika_max-brojsamoglasnika_min);
-        String output = pocetno_slovo+","+zadnje_slovo+","+broj_slogova+","+word_length+","+broj_samoglanika+","+"test"+"\n";
-        /*try {
-            Files.write(Paths.get("output.csv"), output.getBytes(), StandardOpenOption.APPEND);
-        }catch (IOException e) {
-            //exception handling left as an exercise for the reader
-        }*/
+
         return new double[]{pocetno_slovo, zadnje_slovo, broj_slogova, word_length, broj_samoglanika};
     }
 
@@ -101,7 +96,6 @@ public class Normalisation {
         while (m.find()){
             syllables++;
         }
-        //System.out.println(syllables);
         return (double)syllables;
     }
     private static Double samoglasnikcount(String word){
@@ -112,7 +106,6 @@ public class Normalisation {
         while (m.find()){
             syllables++;
         }
-        //System.out.println(syllables);
         return (double)syllables;
     }
 

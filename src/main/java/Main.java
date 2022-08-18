@@ -15,7 +15,6 @@ public class Main {
     public static void main(String[] args) {
         new Normalisation();
         Normalisation.normalize();
-        //System.out.println(Arrays.deepToString(Normalisation.INPUT));
 
         BasicNetwork network = new BasicNetwork();
         network.addLayer(new BasicLayer(null,true,5));
@@ -40,17 +39,7 @@ public class Main {
         } while(train.getError() > 0.001);
         train.finishTraining();
 
-        System.out.println("Neural Network Results:");
-        /*for(MLDataPair pair: trainingSet ) {
-
-            //System.out.print(Arrays.toString(output.getData()));
-            //System.out.println(pozicija_max);
-
-
-
-            //System.out.println(pair.getInput().getData(0) + "," + pair.getInput().getData(1)
-             //       + ", actual=" + output.getData(0) + ",ideal=" + pair.getIdeal().getData(0));
-        }*/
+        System.out.println("Unesite riujec koju zelite prevest:");
         Scanner scanner = new Scanner(System.in);
         MLData unesena_rijec = new BasicMLData(Normalisation.normalizeInput(scanner.nextLine()));
         final MLData output = network.compute(unesena_rijec);
@@ -65,6 +54,7 @@ public class Main {
             }
             i++;
         }
+        System.out.println("Rezultat:");
         check((int) pozicija_max);
         Encog.getInstance().shutdown();
     }
